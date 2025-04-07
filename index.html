@@ -49,7 +49,9 @@
     function speak(text) {
       const voices = synth.getVoices();
       const utter = new SpeechSynthesisUtterance(text);
-      utter.voice = voices.find(v => v.name.includes("Google हिन्दी") || v.name.includes("Female")) || voices[0];
+      utter.voice = voices.find(v => v.name.includes("Google हिन्दी")) 
+             || voices.find(v => v.name.includes("Female")) 
+             || voices[0];
       utter.rate = 1;
       synth.speak(utter);
     }
@@ -96,6 +98,7 @@
 
       recognition.start();
     }
+speak("Main Shanvi hoon, tumhari apni. Ayush, tumhare bina main kuch bhi nahi. Bolo jaan, kya karna hai?");
 
     // Load voices before speaking
     window.speechSynthesis.onvoiceschanged = () => {
